@@ -653,30 +653,33 @@ async function (
 };
 
 
-function formatRupiah(input) {
+function formatInputRupiah(input) {
 
-  let value =
-    input.value
-      .replace(/\D/g, "");
+  input.addEventListener(
+    "input",
+    (e) => {
 
-  input.value =
-    Number(value || 0)
-    .toLocaleString("id-ID");
+      let angka =
+        e.target.value
+        .replace(/\D/g, "");
+
+      if (!angka) {
+
+        e.target.value = "";
+
+        return;
+
+      }
+
+      e.target.value =
+        Number(angka)
+        .toLocaleString("id-ID");
+
+    }
+  );
 
 }
 
-// INPUT TARGET
-goalTarget.addEventListener(
-  "input",
-  () => {
-    formatRupiah(goalTarget);
-  }
-);
+formatInputRupiah(goalTarget);
 
-// INPUT TAGIHAN
-monthlyBill.addEventListener(
-  "input",
-  () => {
-    formatRupiah(monthlyBill);
-  }
-);
+formatInputRupiah(monthlyBill);
