@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>DreamLock Goals</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="dashboard">
+
+    <div class="top-bar">
+
+      <h1>Goals Kamu 🎯</h1>
+
+      <button id="backBtn">
+        Dashboard
+      </button>
+
+    </div>
+
+    <div class="main-card">
+
+      <h2>Tambah Goals</h2>
+
+      <input
+        type="text"
+        id="goalName"
+        placeholder="Nama goals"
+      >
+
+      <input
+        type="number"
+        id="goalTarget"
+        placeholder="Target uang"
+      >
+
+      <input
+        type="number"
+        id="monthlyBill"
+        placeholder="Tagihan per bulan"
+      />
+
+      <div id="dueDateWrapper">
+
+  <input
+    type="number"
+    id="dueDate"
+    placeholder="Tanggal jatuh tempo bulanan"
+  />
+
+</div>
+        <select id="paymentType">
+
+          <option value="weekly">
+            Per Minggu
+          </option>
+
+          <option value="biweekly">
+            Per 2 Minggu
+          </option>
+
+          <option value="monthly">
+            Per Bulan
+          </option>
+
+        </select>
+
+      <button id="saveGoalBtn">
+        Simpan Goals
+      </button>
+
+    </div>
+
+    <div id="goalsContainer">
+
+    </div>
+
+  </div>
+
+  <script type="module" src="js/goals.js"></script>
+
+  <script>
+
+const paymentType =
+document.getElementById(
+  "paymentType"
+);
+
+const dueDateWrapper =
+document.getElementById(
+  "dueDateWrapper"
+);
+
+paymentType.addEventListener(
+  "change",
+  () => {
+
+    if (
+      paymentType.value ===
+      "monthly"
+    ) {
+
+      dueDateWrapper.style.display =
+        "block";
+
+    }
+
+    else {
+
+      dueDateWrapper.style.display =
+        "none";
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
+
