@@ -365,38 +365,49 @@ async function loadGoals(uid) {
             "
           />
 
-          <div class="
-            button-group
-          ">
+          <div class="button-group">
 
-            <button
+  <button
+    onclick="
+      depositMoney(
+        '${docItem.id}',
+        ${data.saved}
+      )
+    "
+  >
+    Setor
+  </button>
 
-              onclick="
-                depositMoney(
-                  '${docItem.id}',
-                  ${data.saved}
-                )
-              "
+  <button
+    class="delete-btn"
+    onclick="
+      deleteGoal(
+        '${docItem.id}'
+      )
+    "
+  >
+    Hapus
+  </button>
 
-            >
-              Setor
-            </button>
+</div>
 
-            <button
+<input
+  type="file"
+  id="proof-${docItem.id}"
+  accept="image/*"
+  class="proof-input"
+/>
 
-              class="delete-btn"
-
-              onclick="
-                deleteGoal(
-                  '${docItem.id}'
-                )
-              "
-
-            >
-              Hapus
-            </button>
-
-          </div>
+<button
+  class="proof-btn"
+  onclick="
+    uploadProof(
+      '${docItem.id}'
+    )
+  "
+>
+  Upload Bukti Transfer
+</button>
 
         </div>
 
@@ -679,6 +690,33 @@ function formatInputRupiah(input) {
   );
 
 }
+
+window.uploadProof =
+async function(docId) {
+
+  const fileInput =
+    document.getElementById(
+      `proof-${docId}`
+    );
+
+  const file =
+    fileInput.files[0];
+
+  if (!file) {
+
+    alert(
+      "Pilih gambar terlebih dahulu"
+    );
+
+    return;
+
+  }
+
+  alert(
+    "Bukti transfer siap dikirim 😭🔥"
+  );
+
+};
 
 formatInputRupiah(goalTarget);
 
